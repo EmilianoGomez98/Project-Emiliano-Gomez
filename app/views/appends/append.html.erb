@@ -1,0 +1,23 @@
+<h3>You are now Appending new data</h3>
+<h5>Please enter the information below</h5>
+<p id="error"><%= flash[:error] %></p>
+
+<%= form_tag '/appends/create' do %>
+<p>
+  <%= label_tag(:key, "Key: ") %><br>
+   <%= text_field_tag :key %>
+ </p>
+    <p>
+      <%= label_tag(:bytes, "Bytes: ") %><br>
+       <%= text_field_tag :bytes %>
+     </p>
+   <p>
+     <%= label_tag(:value, "Value: ") %><br>
+     <%= text_field_tag :value %>
+    </p>
+<p>
+  <%= submit_tag("Submit") %>
+</p>
+<p><%=link_to 'Back',root_path %></p>
+
+<% end %>

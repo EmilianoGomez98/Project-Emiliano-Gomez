@@ -1,0 +1,12 @@
+<h1>Found Keys</h1>
+
+<%@dataHash.each do |key,data|%>
+<p>-------------------------------</p>
+  <p>Key= <%=key%></p>
+  <p>Flag = <%=data.flag %></p>
+  <p>Bytes = <%=data.bytes %></p>
+  <p>Value = <%=data.value %></p>
+  <p>CAS token = <%=data.casToken %></p>
+  <p>-------------------------------</p>
+<%end%>
+<p><%=link_to 'Back to menu', root_path%></p>

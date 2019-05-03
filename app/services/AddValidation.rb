@@ -1,0 +1,31 @@
+module Addvalidation
+
+#Available return codes
+# 0 => "STORED"
+# 1 => "CLIENT_ERROR:Bad command format "
+# 2 => "CLIENT_ERROR:Bad data chunk "
+# 3 => "NOT_STORED"
+# 4 => "EXISTS"
+# 5 => "NOT_FOUND"
+# 6 => "ERROR"
+
+  def add_valid?(key,bytes,flag,timeToLive,value)
+    auxArr = [key,bytes,flag,timeToLive]
+    if !any_empty?(auxArr)
+      if (key.gsub(/\W/,"")==key and bytes.gsub(/\D/,"")==bytes and timeToLive.gsub(/\D/,"")==timeToLive and flag.gsub(/\D/,"")==flag)
+        if bytes.to_i>=value.length
+          if !Memdata.has_key?(key)
+            return 0
+          elsif Memdata.is_expired?(key)
+            return 0
+          end
+          return 3
+        end
+        return 2
+      end
+      return 1
+    end
+    return 6
+  end
+
+end

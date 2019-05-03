@@ -1,0 +1,8 @@
+<h1>You are now in gets</h1>
+<h3>Please enter your keys, separated by spaces</h3>
+<%= form_tag '/getcas/show' do %>
+<%= label_tag(:keys, "Keys:   ") %><br>
+  <%= text_field_tag :keys %>
+  <%= submit_tag 'Enter' %>
+<% end %>
+<p><%=link_to 'Back to menu', root_path%></p>
