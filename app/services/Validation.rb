@@ -18,9 +18,7 @@ module Validation
     return false
   end
 
-  def get_validation(key)
-
-  end
+  
 
 
 end

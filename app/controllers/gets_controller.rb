@@ -6,12 +6,12 @@ class GetsController < ApplicationController
   def show
     keys= params[:keys].split(/\W+/)
     @dataHash = Hash.new
-    for i in 0..keys.length
-      if Memdata.has_key?(keys[i])
-        if !Memdata.is_expired?(keys[i])
-          @dataHash[keys[i]]=(Memdata.get_data(keys[i]))
+    keys.each do |key|
+      if Memdata.has_key?(key)
+        if !Memdata.is_expired?(key)
+          @dataHash[key]=(Memdata.get_data(key))
         else
-          Memdata.delete_expired(keys[i])
+          Memdata.delete_expired(key)
         end
       end
     end
