@@ -1,14 +1,5 @@
 module Validation
 
-#timeToLive tiene que ser dígito
-###Idea: Tener boton 'Refresh' en menu inicio
-#####Sacar método 'is_expired?' de 'add_is_valid', ponerlo afuera, para que se pueda usar 'delete_expired' IMPORTANTE
-######Unir 'getcas' y 'gets', para poder usar un solo show. meter 3 metodos en un controller
-#######Checkear mensajes de error en cas_controller
-########Separar metodos valid
-#########Append no puede estar vacio bytes y value
-
-
 
 # 0 => "STORED",
 # 1 => "CLIENT_ERROR:Bad command format ",
@@ -26,25 +17,6 @@ def any_empty?(arr)
   end
   return false
 end
-
-
-  def append_is_valid?(key,bytes,value)
-    if (key.index(" ")==nil and bytes.gsub(/\D/,"")==bytes)
-      if bytes.to_i>=value.length
-        if Memdata.has_key?(key)
-          if !Memdata.is_expired?(key)
-            return 0
-          end
-          Memdata.delete_expired(key)
-          return 3
-        end
-        return 3
-      end
-      return 2
-    end
-    return 1
-  end
-
 
 
   def preppend_is_valid?(key,bytes,value)

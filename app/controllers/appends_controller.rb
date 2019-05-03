@@ -1,11 +1,13 @@
 class AppendsController < ApplicationController
+  include Appendvalidation
   include Validation
+
 
   def append
   end
 
   def create
-    statusCode = append_is_valid?(params[:key],params[:bytes],params[:value])
+    statusCode = append_valid?(params[:key],params[:bytes],params[:value])
     if statusCode==0
       @data = Memdata.get_data(params[:key])
       previous_value = @data.value
