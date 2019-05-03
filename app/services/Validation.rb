@@ -9,38 +9,18 @@ module Validation
 # 5 => "NOT_FOUND"
 # 6 => "ERROR"
 
-def any_empty?(arr)
-  arr.each do |var|
-    if var.strip.blank?
-      return true
-    end
-  end
-  return false
-end
-
-
-  def cas_is_valid?(key,bytes,value,timeToLive,casToken)
-    if key.index(" ")==nil and bytes.gsub(/\D/,"")==bytes and timeToLive.gsub(/\D/,"")==timeToLive
-      if bytes.to_i>=value.length
-        if Memdata.has_key?(key)
-          if !Memdata.is_expired?(key)
-            data = Memdata.get_data(key)
-            if data.casToken==casToken
-              return 0
-            end
-            return 4
-          end
-          Memdata.delete_expired(key)
-          return 3
-        end
-        return 3
+  def any_empty?(arr)
+    arr.each do |var|
+      if var.strip.blank?
+        return true
       end
-      return 2
     end
-    return 1
+    return false
   end
 
+  def get_validation(key)
 
+  end
 
 
 end
