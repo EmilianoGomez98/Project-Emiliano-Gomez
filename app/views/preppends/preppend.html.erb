@@ -1,6 +1,12 @@
-<h3>You are now Preppending new data</h3>
+<h3>You are now in the 'Preppend' command</h3>
 <h5>Please enter the information below</h5>
-<p id="error"><%= flash[:error] %></p>
+<% if flash[:error]!=nil%>
+  <p id="error">
+    <div class="alert alert-warning" role="alert"><%= flash[:error] %></div>
+  </p>
+<%else%>
+  <br>
+<%end%>
 
 <%= form_tag '/preppends/create' do %>
 <p>
@@ -16,8 +22,9 @@
      <%= text_field_tag :value %>
     </p>
 <p>
-  <%= submit_tag("Submit") %>
+  <%= submit_tag("Submit",{:class => 'btn btn-primary'}) %>
 </p>
-<p><%=link_to 'Back',root_path %></p>
-
 <% end %>
+<p>
+  <a href="/"  class='btn btn-secondary'>Back to menu</a>
+</p>

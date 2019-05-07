@@ -12,17 +12,17 @@ RSpec.describe ReplacesController, type: :controller do
 
       it "Successful replace(1)" do
         post 'create', :params => {:key => "Ab23",:flag => "5",:timeToLive => "200",:bytes => "2",:value => "12"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful replace(2)" do
         post 'create', :params => {:key => "Ab23",:flag => "6",:timeToLive => "0",:bytes => "1",:value => "1"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful replace(3)" do
         post 'create', :params => {:key => "Ab23",:flag => "2",:timeToLive => "100",:bytes => "3",:value => "123"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
     end

@@ -11,17 +11,17 @@ RSpec.describe PreppendsController, type: :controller do
 
       it "Successful preppend(1)" do
         post 'create', :params => {:key => "Ab23",:bytes => "2",:value => "12"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful preppend(2)" do
         post 'create', :params => {:key => "Ab23",:bytes => "1",:value => "1"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful preppend(3)" do
         post 'create', :params => {:key => "Ab23",:bytes => "3",:value => "123"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
     end

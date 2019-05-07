@@ -7,24 +7,24 @@ RSpec.describe AddsController, type: :controller do
     context "Successful add; Renders storage_success" do
       it "Successful add(1)" do
         post 'create', :params => {:key => "Ab23",:flag => "0",:timeToLive => "3000",:bytes => "10",:value => "1234567890"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful add(2)" do
         post 'create', :params => {:key => "0",:flag => "0",:timeToLive => "0",:bytes => "0",:value => ""}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful add(3)" do
         post 'create', :params => {:key => "mnS2",:flag => "12",:timeToLive => "0",:bytes => "3",:value => "123"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Expired key after 1sec, new one created successfully" do
         post 'create', :params => {:key => "mnS2",:flag => "12",:timeToLive => "1",:bytes => "3",:value => "123"}
         sleep(1)
         post 'create', :params => {:key => "mnS2",:flag => "12",:timeToLive => "5",:bytes => "3",:value => "123"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
     end
 

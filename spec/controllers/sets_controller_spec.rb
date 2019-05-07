@@ -7,23 +7,23 @@ RSpec.describe SetsController, type: :controller do
 
       it "Successful set(1)" do
         post 'create', :params => {:key => "Ab23",:flag => "0",:timeToLive => "3000",:bytes => "10",:value => "1234567890"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful set(2)" do
         post 'create', :params => {:key => "0",:flag => "0",:timeToLive => "0",:bytes => "0",:value => ""}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Successful set(3)" do
         post 'create', :params => {:key => "mnS2",:flag => "12",:timeToLive => "3",:bytes => "3",:value => "123"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
 
       it "Overrides previous data specified to the key" do
         post 'create', :params => {:key => "mnS2",:flag => "12",:timeToLive => "3",:bytes => "3",:value => "123"}
         post 'create', :params => {:key => "mnS2",:flag => "0",:timeToLive => "2",:bytes => "5",:value => "2"}
-        expect(response).to render_template("pages/storage_success", "layouts/application")
+        expect(response).to redirect_to(root_path)
       end
     end
 

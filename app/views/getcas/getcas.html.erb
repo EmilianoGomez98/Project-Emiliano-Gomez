@@ -1,9 +1,17 @@
-<h1>You are now in gets</h1>
-<h3>Please enter your keys, separated by spaces</h3>
-<p id="error"><%= flash[:error] %></p>
+<h3>You are now in the 'Gets' command</h3>
+<h5>Please enter your keys, separated by spaces</h5>
+<% if flash[:error]!=nil%>
+  <p id="error">
+    <div class="alert alert-warning" role="alert"><%= flash[:error] %></div>
+  </p>
+<%else%>
+  <br>
+<%end%>
 <%= form_tag '/getcas/show' do %>
-<%= label_tag(:keys, "Keys:   ") %><br>
+  <%= label_tag(:keys, "Keys:   ") %><br>
   <%= text_field_tag :keys %>
-  <%= submit_tag 'Enter' %>
+  <%= submit_tag("Enter",{:class => 'btn btn-primary'}) %>
 <% end %>
-<p><%=link_to 'Back to menu', root_path%></p>
+<p>
+  <a href="/"  class='btn btn-secondary'>Back to menu</a>
+</p>

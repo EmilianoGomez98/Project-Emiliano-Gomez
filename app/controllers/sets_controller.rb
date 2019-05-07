@@ -7,13 +7,13 @@ class SetsController < ApplicationController
 
   def create
     statusCode = set_valid?(params[:key],params[:bytes],params[:flag],params[:timeToLive],params[:value])
+    notification = Constants.get_error(statusCode)
     if statusCode==0
       @data = Memdata.new(params[:flag],params[:timeToLive],params[:bytes],params[:value])
       Memdata.set_key(params[:key],@data)
-      render '/pages/storage_success'
+      redirect_to root_path, :flash => {:notice => notification}
     else
-      error = Constants.get_error(statusCode)
-      redirect_to set_path, :flash => { :error => error }
+      redirect_to set_path, :flash => { :error => notification }
     end
   end
 
