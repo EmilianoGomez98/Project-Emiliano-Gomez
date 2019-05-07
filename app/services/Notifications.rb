@@ -1,4 +1,4 @@
-class Constants
+class Notifications
   @@messagesHash = {
      0 => "STORED",
      1 => "CLIENT_ERROR: Bad format",

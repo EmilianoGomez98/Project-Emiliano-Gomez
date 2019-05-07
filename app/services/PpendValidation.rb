@@ -1,4 +1,4 @@
-module Preppendvalidation
+module Ppendvalidation
 
 #Available return codes
 # 0 => "STORED"
@@ -10,7 +10,7 @@ module Preppendvalidation
 # 6 => "ERROR"
 
 
-  def preppend_valid?(key,bytes,value)
+  def ppend_valid?(key,bytes,value)
     if !any_empty?([key,bytes])
       if (key.gsub(/\W/,"")==key and bytes.gsub(/\D/,"")==bytes)
         if bytes.to_i>=value.length

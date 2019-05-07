@@ -1,13 +1,13 @@
 class PreppendsController < ApplicationController
-  include Preppendvalidation
-  include Validation
+  include Ppendvalidation
+  include Auxvalidation
 
   def prepend
   end
 
   def create
-    statusCode = preppend_valid?(params[:key],params[:bytes],params[:value])
-    notification = Constants.get_error(statusCode)
+    statusCode = ppend_valid?(params[:key],params[:bytes],params[:value])
+    notification = Notifications.get_error(statusCode)
     if statusCode==0
       @data = Memdata.get_data(params[:key])
       previous_value = @data.value

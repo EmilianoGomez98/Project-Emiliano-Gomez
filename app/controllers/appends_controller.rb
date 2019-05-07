@@ -1,14 +1,14 @@
 class AppendsController < ApplicationController
-  include Appendvalidation
-  include Validation
+  include Ppendvalidation
+  include Auxvalidation
 
 
   def append
   end
 
   def create
-    statusCode = append_valid?(params[:key],params[:bytes],params[:value])
-    notification = Constants.get_error(statusCode)
+    statusCode = ppend_valid?(params[:key],params[:bytes],params[:value])
+    notification = Notifications.get_error(statusCode)
     if statusCode==0
       @data = Memdata.get_data(params[:key])
       previous_value = @data.value
