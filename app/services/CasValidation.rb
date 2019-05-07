@@ -1,13 +1,13 @@
 module Casvalidation
 
-#Available return codes
-# 0 => "STORED"
-# 1 => "CLIENT_ERROR:Bad command format "
-# 2 => "CLIENT_ERROR:Bad data chunk "
-# 3 => "NOT_STORED"
-# 4 => "EXISTS"
-# 5 => "NOT_FOUND"
-# 6 => "ERROR"
+  #Available return codes
+  # 0 => "STORED"
+  # 1 => "CLIENT_ERROR:Bad command format "
+  # 2 => "CLIENT_ERROR:Bad data chunk "
+  # 3 => "NOT_STORED"
+  # 4 => "EXISTS"
+  # 5 => "NOT_FOUND"
+  # 6 => "ERROR"
 
   def cas_valid?(key,bytes,flag,timeToLive,value,casToken)
     if !any_empty?([key,bytes,flag,timeToLive,value,casToken])
