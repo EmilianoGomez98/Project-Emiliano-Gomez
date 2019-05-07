@@ -13,7 +13,7 @@ module Ppendvalidation
   def ppend_valid?(key,bytes,value)
     if !any_empty?([key,bytes])
       if (key.gsub(/\W/,"")==key and bytes.gsub(/\D/,"")==bytes)
-        if bytes.to_i>=value.length
+        if bytes.to_i==value.length
           if Memdata.has_key?(key)
             if !Memdata.is_expired?(key)
               return 0

@@ -12,7 +12,7 @@ module Casvalidation
   def cas_valid?(key,bytes,flag,timeToLive,value,casToken)
     if !any_empty?([key,bytes,flag,timeToLive,value,casToken])
       if (key.gsub(/\W/,"")==key and bytes.gsub(/\D/,"")==bytes and timeToLive.gsub(/\D/,"")==timeToLive and flag.gsub(/\D/,"")==flag)
-        if bytes.to_i>=value.length
+        if bytes.to_i==value.length
           if Memdata.has_key?(key)
             if !Memdata.is_expired?(key)
               data = Memdata.get_data(key)
