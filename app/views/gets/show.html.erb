@@ -1,16 +1,18 @@
 <h1>Found Keys</h1>
+
 <%i=1%>
 <%@dataHash.each do |key,data|%>
-<br>
-<ul class="list-group">
-  <h5>Data n° <%=i%></h5>
-  <li class="list-group-item">Key= <%=key%></li>
-  <li class="list-group-item">Flag = <%=data.flag %></li>
-  <li class="list-group-item">Bytes = <%=data.bytes %></li>
-  <li class="list-group-item">Value = <%=data.value %></li>
-</ul>
-<%i+=1%>
+  <br>
+  <ul class="list-group">
+    <h5>Data n° <%=i%></h5>
+    <li class="list-group-item">Key= <%=key%></li>
+    <li class="list-group-item">Flag = <%=data.flag %></li>
+    <li class="list-group-item">Bytes = <%=data.bytes %></li>
+    <li class="list-group-item">Value = <%=data.value %></li>
+  </ul>
+  <%i+=1%>
 <%end%>
+
 <br>
 <p>
   <a href="/"  class='btn btn-secondary'>Back to menu</a>

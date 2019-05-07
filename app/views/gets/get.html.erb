@@ -1,5 +1,6 @@
 <h3>You are now in the 'Get' command</h3>
 <h5>Please enter your keys, separated by spaces</h5>
+
 <% if flash[:error]!=nil%>
   <p id="error">
     <div class="alert alert-warning" role="alert"><%= flash[:error] %></div>
@@ -7,11 +8,13 @@
 <%else%>
   <br>
 <%end%>
+
 <%= form_tag '/gets/show' do %>
-<%= label_tag(:keys, "Keys:   ") %><br>
+  <%= label_tag(:keys, "Keys:   ") %><br>
   <%= text_field_tag :keys %>
   <%= submit_tag("Enter",{:class => 'btn btn-primary'}) %>
 <% end %>
+
 <p>
   <a href="/"  class='btn btn-secondary'>Back to menu</a>
 </p>
