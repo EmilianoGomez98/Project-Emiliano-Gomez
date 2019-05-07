@@ -37,6 +37,11 @@ RSpec.describe AppendsController, type: :controller do
         post 'create', :params => {:key => "Ab23",:bytes => "1",:value => "123"}
         expect(response).to redirect_to("/append")
       end
+
+      it "value.length<bytes" do
+        post 'create', :params => {:key => "Ab23",:flag => "1",:timeToLive => "1",:bytes => "3",:value => "12"}
+        expect(response).to redirect_to("/append")
+      end
     end
 
     context "Not successful, empty necesary field, redirects to /append" do

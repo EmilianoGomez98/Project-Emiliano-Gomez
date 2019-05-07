@@ -22,7 +22,7 @@ RSpec.describe SetsController, type: :controller do
 
       it "Overrides previous data specified to the key" do
         post 'create', :params => {:key => "mnS2",:flag => "12",:timeToLive => "3",:bytes => "3",:value => "123"}
-        post 'create', :params => {:key => "mnS2",:flag => "0",:timeToLive => "2",:bytes => "5",:value => "2"}
+        post 'create', :params => {:key => "mnS2",:flag => "0",:timeToLive => "2",:bytes => "5",:value => "12345"}
         expect(response).to redirect_to(root_path)
       end
     end
@@ -45,6 +45,11 @@ RSpec.describe SetsController, type: :controller do
 
       it "value.length>bytes" do
         post 'create', :params => {:key => "1",:flag => "1",:timeToLive => "1",:bytes => "1",:value => "123"}
+        expect(response).to redirect_to("/set")
+      end
+
+      it "value.length<bytes" do
+        post 'create', :params => {:key => "Ab23",:flag => "1",:timeToLive => "1",:bytes => "3",:value => "12"}
         expect(response).to redirect_to("/set")
       end
 

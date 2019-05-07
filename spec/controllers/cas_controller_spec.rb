@@ -56,6 +56,11 @@ RSpec.describe CasController, type: :controller do
         expect(response).to redirect_to("/cas")
       end
 
+      it "value.length<bytes" do
+        post 'create', :params => {:key => "Ab23",:flag => "1",:timeToLive => "1",:bytes => "3",:value => "12",:casToken =>@token}
+        expect(response).to redirect_to("/cas")
+      end
+
 
     end
 
