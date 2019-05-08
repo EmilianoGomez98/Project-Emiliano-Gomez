@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe AppendsController, type: :controller do
   describe "POST #create" do
     before(:each) do
-      data = Memdata.new("0","1","2","12")
-      Memdata.set_key("Ab23",data)
+      Memdata.create_memdata("Ab23","0","1","2","12")
     end
 
     context "Successful append; Renders storage_success" do

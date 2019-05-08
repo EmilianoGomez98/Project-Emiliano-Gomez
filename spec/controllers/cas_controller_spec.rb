@@ -10,8 +10,8 @@ RSpec.describe CasController, type: :controller do
       # => bytes : "2"
       # => value : "12"
       # Assigned key : "Ab23"
-      data = Memdata.new("0","1","2","12")
-      Memdata.set_key("Ab23", data)
+      Memdata.create_memdata("Ab23","0","1","2","12")
+      data = Memdata.get_data("Ab23")
       @token = data.casToken
     end
 

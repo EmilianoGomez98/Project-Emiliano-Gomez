@@ -1,9 +1,9 @@
 describe Memdata do
 
   before(:each) do
-    @data = Memdata.new("0","1","3","val")
+    Memdata.create_memdata("Ab23","0","1","3","val")
+    @data = Memdata.get_data("Ab23")
     @expectedExpTime = Time.now +  1.seconds
-    Memdata.set_key("Ab23",@data)
   end
 
     context "creating new memdata" do

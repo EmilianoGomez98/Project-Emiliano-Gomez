@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe GetsController, type: :controller do
   describe "POST #show" do
     before(:each) do
-      data = Memdata.new("0","1","2","12")
-      Memdata.set_key("Ab23",data)
+      Memdata.create_memdata("Ab23","0","1","2","12")
     end
 
     context "Successfully retrieves data for the given keys" do

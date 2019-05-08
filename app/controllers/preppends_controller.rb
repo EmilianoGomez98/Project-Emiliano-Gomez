@@ -14,7 +14,6 @@ class PreppendsController < ApplicationController
       @data.value=(params[:value] + previous_value)
       @data.bytes=(@data.bytes + params[:bytes].to_i)
       @data.change_casToken
-      Memdata.set_key(params[:key],@data)
       redirect_to root_path, :flash => {:notice => notification}
     else
       redirect_to preppend_path, :flash => { :error => notification }

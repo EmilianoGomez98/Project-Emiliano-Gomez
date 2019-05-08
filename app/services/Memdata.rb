@@ -21,6 +21,11 @@ class Memdata
     @@casCounter +=1
   end
 
+  def self.create_memdata(key,flag,timeToLive,bytes,value)
+    data = Memdata.new(flag,timeToLive,bytes,value)
+    @@keyHash[key] = data
+  end
+
   def change_casToken
     @casToken = @@casCounter
     @@casCounter +=1
@@ -37,10 +42,6 @@ class Memdata
 
   def self.get_data(key)
     return @@keyHash[key]
-  end
-
-  def self.set_key(key,value)
-    @@keyHash[key] = value
   end
 
   def self.has_key?(key)
