@@ -17,7 +17,7 @@ class GetsController < ApplicationController
         end
       end
     else
-      redirect_to get_path, :flash => { :error => "ERROR" }
+      redirect_to get_path, :flash => { :error => Notifications.get_error(6)}
     end
   end
 

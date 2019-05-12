@@ -33,7 +33,11 @@ class Memdata
 
   def self.is_expired?(key)
     time = Time.now.to_i
-    return (@@keyHash.has_key?(key) and @@keyHash[key].expTime.to_i<=time)
+    expTime = @@keyHash[key].expTime
+    if(expTime!=nil)
+      return (@@keyHash.has_key?(key) and expTime.to_i<=time)
+    end
+    return false
   end
 
   def self.delete_expired(key)

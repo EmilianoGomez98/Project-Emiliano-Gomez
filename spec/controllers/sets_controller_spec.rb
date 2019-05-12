@@ -80,20 +80,3 @@ RSpec.describe SetsController, type: :controller do
 
   end
 end
-
-
-
-#  before do
-#    assign(:key, '10')
-#    assign(:bytes, "1")
-#    assign(:flag, "0")
-#    assign(:timeToLive, "10")
-#    assign(:value, "10")
-#  end
-#  describe '#create' do
-#    it "Creates new 'data' and assigns it to a specific key" do
-#
-#      expect(Memdata.get_data(assigns(:key))).to eq @data
-#    end
-#  end
-#end
